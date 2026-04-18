@@ -1,3 +1,4 @@
+/* Numer indeksu: 77020 */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -96,4 +97,84 @@ button {
 
 button:hover {
     background: #f0f0f0;
+}
+
+#contactForm fieldset {
+    border: 2px solid #d63031 !important;
+    background-color: #fff5f5 !important;
+    border-radius: 0px !important; 
+}
+
+#contactForm legend {
+    color: #c0392b !important;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #c0392b;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px; 
+    box-sizing: border-box;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #d63031;
+}
+
+.form-group input.error,
+.form-group textarea.error {
+    border-color: red;
+    background-color: #ffeef0;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.85em;
+    display: block;
+    margin-top: 5px;
+    min-height: 16px;
+}
+
+.success-message {
+    color: #27ae60; 
+    font-weight: bold;
+    text-align: center;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #eafaf1;
+    border-radius: 4px;
+    border: 1px solid #27ae60;
+}
+
+.form-submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #d63031;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 15px;
+    text-transform: uppercase;
+}
+
+.form-submit-btn:hover {
+    background-color: #c0392b;
 }

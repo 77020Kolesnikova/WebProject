@@ -1,3 +1,4 @@
+/* Numer indeksu: 77020 */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -95,4 +96,74 @@ button {
 
 button:hover {
     background: #f0f0f0;
+}
+
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #2e8b57;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #2e8b57;
+}
+
+.form-group input.error,
+.form-group textarea.error {
+    border-color: red;
+    background-color: #ffeef0;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.85em;
+    display: block;
+    margin-top: 5px;
+    min-height: 16px;
+}
+
+.success-message {
+    color: #008000;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #e6f9e6;
+    border-radius: 8px;
+    border: 1px solid #a2d2a2;
+}
+
+.form-submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #2e8b57;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.form-submit-btn:hover {
+    background-color: #008000;
 }
