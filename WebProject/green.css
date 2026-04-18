@@ -82,3 +82,17 @@ footer {
     color: #666;
     margin-top: 50px;
 }
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background: white;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #f0f0f0;
+}

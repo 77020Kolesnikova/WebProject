@@ -8,7 +8,10 @@
 </head>
 
 <body>
-
+<div style="text-align: center; margin-top: 20px;">
+    <button id="theme-btn" style="padding: 10px; cursor: pointer;">Zmień motyw (Czerwony/Zielony)</button>
+    <button id="toggle-section-btn" style="padding: 10px; cursor: pointer;">Pokaż/Ukryj Doświadczenie</button>
+</div>
 <header>
     <h1 id="typing-title">Kolesnikova Polina</h1>
     <p>Warszawa • +48 576 431 280 • pkolesn1@stu.vistula.edu.pl</p>
@@ -58,7 +61,7 @@
         <p>Kierunek: Junior Computer Academy</p>
     </section>
 
-    <section>
+    <section id="experience-section">
         <h2>Doświadczenie</h2>
         <article>
             <h3>Projekt: Baza danych dla księgarni</h3>
@@ -105,36 +108,7 @@
     <p>© 2026 Kolesnikova Polina, numer albomu: 77020</p>
 </footer>
 
-<script>
-    const titleElement = document.getElementById('typing-title');
-
-    const titleText = titleElement.textContent; 
-    titleElement.textContent = ''; 
-    let charIndex = 0;
-
-    function typeWriter() {
-        if (charIndex < titleText.length) {
-            titleElement.textContent += titleText.charAt(charIndex);
-            charIndex++;
-            setTimeout(typeWriter, 100); 
-        }
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.15 });
-
-    window.onload = () => {
-        typeWriter();
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-    };
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
