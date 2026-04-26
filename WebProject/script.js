@@ -22,6 +22,7 @@ const observer = new IntersectionObserver((entries) => {
 
 window.onload = () => {
     typeWriter();
+    loadDynamicData();
     document.querySelectorAll('section').forEach(section => {
         observer.observe(section);
     });
@@ -117,4 +118,32 @@ function clearErrors() {
 
     const errorInputs = document.querySelectorAll('.error');
     errorInputs.forEach(input => input.classList.remove('error'));
+}
+
+function loadDynamicData() {
+    fetch('data.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Błąd sieci: ' + response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            const skillsList = document.getElementById('skills-list');
+            data.skills.forEach(skill => {
+                const li = document.createElement('li');
+                li.textContent = skill;
+                skillsList.appendChild(li);
+            });
+
+            const projectsList = document.getElementById('projects-list');
+            data.projects.forEach(project => {
+                const li = document.createElement('li');
+                li.textContent = project;
+                projectsList.appendChild(li);
+            });
+        })
+        .catch(error => {
+            console.error('Wystąpił problem z pobieraniem danych z JSON:', error);
+        });
 }
