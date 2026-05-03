@@ -23,6 +23,7 @@ const observer = new IntersectionObserver((entries) => {
 window.onload = () => {
     typeWriter();
     loadDynamicData();
+    loadNotes(); 
     document.querySelectorAll('section').forEach(section => {
         observer.observe(section);
     });
@@ -39,7 +40,6 @@ themeBtn.addEventListener('click', () => {
     }
 });
 
-
 const toggleBtn = document.getElementById('toggle-section-btn');
 const sectionToHide = document.getElementById('experience-section');
 
@@ -50,7 +50,6 @@ toggleBtn.addEventListener('click', () => {
         sectionToHide.style.display = 'none';
     }
 });
-
 
 const contactForm = document.getElementById('contactForm');
 
@@ -146,4 +145,61 @@ function loadDynamicData() {
         .catch(error => {
             console.error('Wystąpił problem z pobieraniem danych z JSON:', error);
         });
+}
+
+const noteInput = document.getElementById('noteInput');
+const addNoteBtn = document.getElementById('addNoteBtn');
+const notesList = document.getElementById('notesList');
+
+function loadNotes() {
+    const savedNotes = JSON.parse(localStorage.getItem('userNotes')) || [];
+    notesList.innerHTML = ''; 
+    
+    savedNotes.forEach((note, index) => {
+        addNoteToDOM(note, index);
+    });
+}
+
+function addNoteToDOM(text, index) {
+    const li = document.createElement('li');
+    
+    const span = document.createElement('span');
+    span.textContent = text;
+    
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Usuń';
+    deleteBtn.classList.add('delete-btn');
+    
+    // Obsługa usunięcia notatki
+    deleteBtn.addEventListener('click', () => {
+        deleteNote(index);
+    });
+    
+    li.appendChild(span);
+    li.appendChild(deleteBtn);
+    notesList.appendChild(li);
+}
+
+if (addNoteBtn) {
+    addNoteBtn.addEventListener('click', () => {
+        const newNoteText = noteInput.value.trim();
+        
+        if (newNoteText !== '') {
+            const savedNotes = JSON.parse(localStorage.getItem('userNotes')) || [];
+            savedNotes.push(newNoteText); 
+            
+            localStorage.setItem('userNotes', JSON.stringify(savedNotes)); 
+            noteInput.value = ''; 
+            
+            loadNotes(); 
+        }
+    });
+}
+
+function deleteNote(indexToRemove) {
+    let savedNotes = JSON.parse(localStorage.getItem('userNotes')) || [];
+    savedNotes.splice(indexToRemove, 1); 
+    
+    localStorage.setItem('userNotes', JSON.stringify(savedNotes)); 
+    loadNotes(); 
 }

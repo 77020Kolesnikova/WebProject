@@ -167,3 +167,35 @@ button:hover {
 .form-submit-btn:hover {
     background-color: #008000;
 }
+
+.notes-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.notes-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
