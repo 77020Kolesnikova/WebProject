@@ -98,8 +98,37 @@ if (contactForm) {
         }
 
         if (isValid) {
-            document.getElementById('successMessage').style.display = 'block';
-            contactForm.reset(); 
+            const formData = {
+                firstName: firstName.value,
+                lastName: lastName.value,
+                email: email.value,
+                message: message.value
+            };
+
+            fetch('http://localhost:3000/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const successMsg = document.getElementById('successMessage');
+                    successMsg.style.display = 'block';
+                    successMsg.innerText = 'Wiadomość została pomyślnie wysłana i zapisana w bazie!';
+                    contactForm.reset(); 
+                    
+                    setTimeout(() => {
+                        successMsg.style.display = 'none';
+                    }, 5000);
+                }
+            })
+            .catch(error => {
+                console.error('Błąd podczas wysyłania do serwera:', error);
+                alert('Nie udało się połączyć z serwerem. Upewnij się, że node server.js działa!');
+            });
         } else {
             document.getElementById('successMessage').style.display = 'none';
         }
@@ -170,7 +199,6 @@ function addNoteToDOM(text, index) {
     deleteBtn.textContent = 'Usuń';
     deleteBtn.classList.add('delete-btn');
     
-    // Obsługa usunięcia notatki
     deleteBtn.addEventListener('click', () => {
         deleteNote(index);
     });
